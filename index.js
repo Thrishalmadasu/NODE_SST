@@ -44,11 +44,21 @@
 const http = require('http');
 
 const server = http.createServer((req,res)=>{
+    res.setHeader('Content-Type','text/html');
+
+    if(req.url == '/login'){
+    res.setHeader('ContentType','text/html');
+    res.write('<html><head><title>node js class</title></head><body>')
+    res.write('<h1>Hello Login!</h1>');
+    res.write('</body></html>');
+    res.end();
+    }else{
     res.setHeader('ContentType','text/html');
     res.write('<html><head><title>node js class</title></head><body>')
     res.write('<h1>Hello world!</h1>');
     res.write('</body></html>');
     res.end();
+    }
 })
 
 const port = 3000;
@@ -57,3 +67,4 @@ const host = 'localhost';
 server.listen(port,host,()=>{
     console.log(`server is listening on http://${host}:${port}`);
 })
+
